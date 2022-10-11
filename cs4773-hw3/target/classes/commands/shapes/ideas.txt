@@ -1,0 +1,5 @@
+Make a stack for the command stuff. Every new command/call to a shape function, gets added to a stack.
+When undo is selected, it pops an object that stored what it did.
+Make a command object: stores like W and H, Shape, Method, Color...
+Make an enum to select what method was last used.
+ 
