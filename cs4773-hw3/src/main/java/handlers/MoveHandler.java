@@ -6,7 +6,7 @@ public class MoveHandler implements Handler {
 
     }
 
-    public void request() {
+    public void request(String command) {
 
     }
 }

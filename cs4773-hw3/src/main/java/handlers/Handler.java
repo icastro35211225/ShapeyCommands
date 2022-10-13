@@ -1,7 +1,7 @@
 package handlers;
 
 public interface Handler {
-    Handler nextHanlder = null;
+    Handler nextHandler = null;
 
-    public void request();
+    public void request(String command);
 }
