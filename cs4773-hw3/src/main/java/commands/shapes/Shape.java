@@ -1,12 +1,19 @@
 package commands.shapes;
 
 public abstract class Shape {
-    public String[] colors = { "Red", "Blue", "Yellow", "Orange", "Green" };
+    int[] origin = { 0, 0 };
+    int index = -1;
+    Color color = new Color();
 
-    final void createRectangle(int height, int width) {
-        Rectangle newRectangle = new Rectangle(height, width, colors[0]);
-
+    public final int[] getOrigin() {
+        return origin;
     }
 
-    abstract void draw();
+    public final void setOrigin(int[] origin) {
+        this.origin = origin;
+    }
+
+    abstract void color(String color);
+
+    abstract String draw();
 }
