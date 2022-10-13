@@ -26,12 +26,8 @@ public class Rectangle extends Shape {
         return width;
     }
 
-    public String getColor() {
-        return color.getColor();
-    }
-
-    public void color(String color) {
-
+    public Color getColor() {
+        return color;
     }
 
     public String draw() {
