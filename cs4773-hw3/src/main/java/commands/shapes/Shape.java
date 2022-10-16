@@ -13,7 +13,7 @@ public abstract class Shape {
         this.origin = origin;
     }
 
-    abstract String draw();
+    public abstract String draw();
 
     public abstract Color getColor();
 
