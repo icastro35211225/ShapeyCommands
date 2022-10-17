@@ -18,6 +18,6 @@ public class DrawHandler implements Handler {
         }
 
         Draw draw = new Draw();
-        draw.execute(shape);
+        draw.excecute(shape);
     }
 }

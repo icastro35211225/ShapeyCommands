@@ -6,7 +6,7 @@ import java.util.Stack;
 import commands.shapes.Shape;
 
 public class State {
-    ArrayList<Shape> existingShapes = new ArrayList<Shape>();
+    static ArrayList<Shape> existingShapes = new ArrayList<Shape>();
     Stack<Command> commandStack = new Stack<Command>();
 
     public void addShape(Shape newShape) {
@@ -23,5 +23,9 @@ public class State {
 
     public void removeShape(int index) {
         existingShapes.remove(index);
+    }
+
+    public static ArrayList<Shape> getExistingShapes() {
+        return existingShapes;
     }
 }
