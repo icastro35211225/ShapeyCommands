@@ -1,5 +1,7 @@
 package handlers;
 
+import commands.commandManager.State;
+import commands.commandManager.main;
 import commands.shapes.Shape;
 
 public class UndoHandler implements Handler {
@@ -10,10 +12,14 @@ public class UndoHandler implements Handler {
     }
 
     public void request(String command, Shape shape) {
-        String[] splitCommad = command.split(" ");
+        String[] splitCommand = command.split(" ");
 
-        if (!splitCommad[0].equals("DELETE")) {
+        if (!splitCommand[0].equals("UNDO")) {
             nextHandler.request(command, shape);
         }
+
+        // pop from command stack, or obj command
+        // and call the popped obj's undo function
+        main oldCommand = State.commandStack.pop();
     }
 }

@@ -1,5 +1,7 @@
 package handlers;
 
+import commands.commandManager.State;
+import commands.commands.Select;
 import commands.shapes.Shape;
 
 public class SelectHandler implements Handler {
@@ -10,10 +12,19 @@ public class SelectHandler implements Handler {
     }
 
     public void request(String command, Shape shape) {
-        String[] splitCommad = command.split(" ");
+        String[] splitCommand = command.split(" ");
 
-        if (!splitCommad[0].equals("DELETE")) {
+        if (!splitCommand[0].equals("SELECT")) {
             nextHandler.request(command, shape);
+        }
+
+        try {
+            int index = Integer.parseInt(splitCommand[1]);
+            if (State.existingShapes.get(index) == null) {
+                Select.execute(State.existingShapes.get(index));
+            }
+        } catch (Exception e) {
+            System.err.println(e);
         }
     }
 }

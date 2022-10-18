@@ -17,7 +17,11 @@ public class DrawHandler implements Handler {
             nextHandler.request(command, shape);
         }
 
-        Draw draw = new Draw();
-        draw.execute(shape);
+        try {
+            Draw draw = new Draw();
+            draw.execute(shape);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
     }
 }

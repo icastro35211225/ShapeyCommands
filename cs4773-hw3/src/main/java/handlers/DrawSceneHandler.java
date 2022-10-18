@@ -1,6 +1,7 @@
 package handlers;
 
-import commands.commands.Delete;
+import commands.commandManager.State;
+import commands.commands.DrawScene;
 import commands.shapes.Shape;
 
 public class DrawSceneHandler implements Handler {
@@ -11,14 +12,15 @@ public class DrawSceneHandler implements Handler {
     }
 
     public void request(String command, Shape shape) {
-        String[] splitCommad = command.split(" ");
+        String[] splitCommand = command.split(" ");
 
-        if (!splitCommad[0].equals("DELETE")) {
+        if (!splitCommand[0].equals("DRAWSCENE")) {
             nextHandler.request(command, shape);
         }
 
         try {
-            Delete.execute(shape);
+            DrawScene drawScene = new DrawScene();
+            drawScene.execute(State.getExistingShapes());
         } catch (Exception e) {
             System.err.println(e);
         }

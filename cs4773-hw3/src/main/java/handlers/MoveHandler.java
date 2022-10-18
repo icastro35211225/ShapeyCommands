@@ -1,5 +1,6 @@
 package handlers;
 
+import commands.commands.Move;
 import commands.shapes.Shape;
 
 public class MoveHandler implements Handler {
@@ -10,10 +11,19 @@ public class MoveHandler implements Handler {
     }
 
     public void request(String command, Shape shape) {
-        String[] splitCommad = command.split(" ");
+        String[] splitCommand = command.split(" ");
 
-        if (!splitCommad[0].equals("DELETE")) {
+        if (!splitCommand[0].equals("MOVE")) {
             nextHandler.request(command, shape);
+        }
+
+        try {
+            double[] coordinates = { Double.parseDouble(splitCommand[1]),
+                    Double.parseDouble(splitCommand[2]) };
+
+            Move.execute(shape, coordinates);
+        } catch (Exception e) {
+            System.err.println(e);
         }
     }
 }

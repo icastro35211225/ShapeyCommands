@@ -10,7 +10,7 @@ public class Color {
     }
 
     public void undo(String prevColor) {
-        curColor = prevColor;
+        curColor = this.prevColor;
         this.prevColor = prevColor;
     }
 

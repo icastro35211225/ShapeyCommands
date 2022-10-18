@@ -3,6 +3,7 @@ package commands.shapes;
 public class Rectangle extends Shape {
     private int height;
     private int width;
+    private double[] cooridnates = origin.getOrigin();
 
     public Rectangle(int height, int width) {
         this.height = height;
@@ -26,12 +27,9 @@ public class Rectangle extends Shape {
         return width;
     }
 
-    public Color getColor() {
-        return color;
-    }
-
     public String draw() {
-        return "Rectangle, Color: " + color + ", Origin: (" + origin[0] + ", " + origin[1] + "), Width: " + width
+        return "Rectangle, Color: " + color + ", Origin: (" + cooridnates[0] + ", " + cooridnates[1] + "), Width: "
+                + width
                 + ", Height: " + height;
     }
 }

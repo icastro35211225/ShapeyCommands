@@ -1,20 +1,22 @@
 package commands.shapes;
 
 public abstract class Shape {
-    int[] origin = { 0, 0 };
+    Origin origin = new Origin();
     int index = -1;
     Color color = new Color();
 
-    public final int[] getOrigin() {
-        return origin;
+    public final double[] getOrigin() {
+        return origin.getOrigin();
     }
 
-    public final void setOrigin(int[] origin) {
-        this.origin = origin;
+    public final String getColor() {
+        return color.getColor();
+    }
+
+    public final void setOrigin(double[] coordinates) {
+        origin.execute(coordinates);
     }
 
     public abstract String draw();
-
-    public abstract Color getColor();
 
 }
