@@ -1,7 +1,6 @@
 package commands.commands;
 
 import commands.shapes.Shape;
-
 import commands.shapes.Color;
 
 public class ChangeColor {
