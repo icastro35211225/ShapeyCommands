@@ -20,8 +20,8 @@ public class SelectHandler implements Handler {
 
         try {
             int index = Integer.parseInt(splitCommand[1]);
-            if (State.existingShapes.get(index) == null) {
-                Select.execute(State.existingShapes.get(index));
+            if (State.existingShapes.get(index) != null) {
+                Select.execute(index);
             }
         } catch (Exception e) {
             System.err.println(e);

@@ -1,16 +1,19 @@
 package commands.commands;
 
 import commands.commandManager.State;
-import commands.shapes.Shape;
 
 public class Select {
-    static Shape selectedShape = null;
-    static Shape prevShape = null;
+    static int selectedShape = 0;
+    static int prevShape = 0;
 
-    public static void execute(Shape shape) {
+    public static void execute(int index) {
         prevShape = selectedShape;
-        selectedShape = shape;
+        selectedShape = index;
 
-        State.currentShape = shape;
+        State.currentShape = index;
+    }
+
+    public void undo() {
+
     }
 }

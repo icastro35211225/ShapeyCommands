@@ -2,6 +2,7 @@ package handlers;
 
 import commands.commandManager.State;
 import commands.commandManager.main;
+import commands.commands.Command;
 import commands.shapes.Shape;
 
 public class UndoHandler implements Handler {
@@ -20,6 +21,6 @@ public class UndoHandler implements Handler {
 
         // pop from command stack, or obj command
         // and call the popped obj's undo function
-        main oldCommand = State.commandStack.pop();
+        Command oldCommand = State.commandStack.pop();
     }
 }

@@ -1,12 +1,16 @@
 package commands.commands;
 
-public class CreateRectangle {
-    int height;
-    int width;
+import commands.commandManager.State;
+import commands.shapes.Rectangle;
 
-    public void execute(int height, int width){
-        this.height = height;
-        this.width = width;
+public class CreateRectangle extends Command {
+
+    public void execute(int height, int width) {
+        Rectangle newRectangle = new Rectangle(height, width);
+        State.existingShapes.add(newRectangle);
     }
 
+    public void undo() {
+
+    }
 }
