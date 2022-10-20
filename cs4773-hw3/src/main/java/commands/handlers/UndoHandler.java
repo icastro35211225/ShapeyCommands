@@ -1,4 +1,4 @@
-package handlers;
+package commands.handlers;
 
 import commands.commandManager.State;
 import commands.commandManager.main;

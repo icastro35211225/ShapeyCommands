@@ -1,9 +1,9 @@
-package handlers;
+package commands.handlers;
 
-import commands.commands.Delete;
+import commands.commands.Draw;
 import commands.shapes.Shape;
 
-public class DeleteHandler implements Handler {
+public class DrawHandler implements Handler {
     Handler nextHandler;
 
     public void setNextHandler(Handler nextHandler) {
@@ -11,16 +11,15 @@ public class DeleteHandler implements Handler {
     }
 
     public void request(String command, Shape shape) {
-        String[] splitCommad = command.split(" ");
+        String[] splitCommand = command.split(" ");
 
-        if (!splitCommad[0].equals("DELETE")) {
+        if (!splitCommand[0].equals("DRAW")) {
             nextHandler.request(command, shape);
         }
 
         try {
-            int index = Integer.parseInt(splitCommad[1]);
-            Delete delete = new Delete();
-            delete.execute(shape);
+            Draw draw = new Draw();
+            draw.execute(shape);
         } catch (Exception e) {
             System.err.println(e);
         }

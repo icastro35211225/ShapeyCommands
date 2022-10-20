@@ -1,9 +1,10 @@
-package handlers;
+package commands.handlers;
 
-import commands.commands.Move;
+import commands.commandManager.State;
+import commands.commands.DrawScene;
 import commands.shapes.Shape;
 
-public class MoveHandler implements Handler {
+public class DrawSceneHandler implements Handler {
     Handler nextHandler;
 
     public void setNextHandler(Handler nextHandler) {
@@ -13,15 +14,13 @@ public class MoveHandler implements Handler {
     public void request(String command, Shape shape) {
         String[] splitCommand = command.split(" ");
 
-        if (!splitCommand[0].equals("MOVE")) {
+        if (!splitCommand[0].equals("DRAWSCENE")) {
             nextHandler.request(command, shape);
         }
 
         try {
-            double[] coordinates = { Double.parseDouble(splitCommand[1]),
-                    Double.parseDouble(splitCommand[2]) };
-
-            Move.execute(shape, coordinates);
+            DrawScene drawScene = new DrawScene();
+            drawScene.execute(State.getExistingShapes());
         } catch (Exception e) {
             System.err.println(e);
         }

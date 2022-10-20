@@ -1,4 +1,4 @@
-package handlers;
+package commands.handlers;
 
 import commands.commands.*;
 import commands.shapes.Shape;;
