@@ -20,7 +20,7 @@ public class State {
         momentos.add(newMomento);
     }
 
-    public Momento popCommand() {
+    public Momento popMomento() {
         return momentos.pop();
     }
 
@@ -40,5 +40,9 @@ public class State {
             System.err.println(e);
         }
         return retShape;
+    }
+
+    public int getShapeIndex(Shape shape) {
+        return existingShapes.indexOf(shape);
     }
 }

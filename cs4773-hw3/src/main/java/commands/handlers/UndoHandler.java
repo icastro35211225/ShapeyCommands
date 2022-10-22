@@ -18,7 +18,7 @@ public class UndoHandler implements Handler {
             System.err.println("ERROR! Invalid Command Given!! -_-");
         }
 
-        Command undoCommand = state.popCommand().getCommand();
+        Command undoCommand = state.popMomento().getCommand();
         undoCommand.undo(splitCommand, state);
     }
 }
