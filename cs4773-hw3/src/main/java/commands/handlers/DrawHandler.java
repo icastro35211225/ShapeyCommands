@@ -1,7 +1,7 @@
 package commands.handlers;
 
+import commands.commandManager.State;
 import commands.commands.Draw;
-import commands.shapes.Shape;
 
 public class DrawHandler implements Handler {
     Handler nextHandler;
@@ -10,18 +10,16 @@ public class DrawHandler implements Handler {
         this.nextHandler = nextHandler;
     }
 
-    public void request(String command, Shape shape) {
+    public void request(String command, State state) {
         String[] splitCommand = command.split(" ");
 
         if (!splitCommand[0].equals("DRAW")) {
-            nextHandler.request(command, shape);
+            nextHandler.request(command, state);
         }
 
-        try {
-            Draw draw = new Draw();
-            draw.execute(shape);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
+        Draw draw = new Draw();
+
+        draw.execute(splitCommand, state);
+        state.addCommand(draw);
     }
 }

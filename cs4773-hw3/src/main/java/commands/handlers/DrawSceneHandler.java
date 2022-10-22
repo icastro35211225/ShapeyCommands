@@ -2,7 +2,6 @@ package commands.handlers;
 
 import commands.commandManager.State;
 import commands.commands.DrawScene;
-import commands.shapes.Shape;
 
 public class DrawSceneHandler implements Handler {
     Handler nextHandler;
@@ -11,18 +10,16 @@ public class DrawSceneHandler implements Handler {
         this.nextHandler = nextHandler;
     }
 
-    public void request(String command, Shape shape) {
+    public void request(String command, State state) {
         String[] splitCommand = command.split(" ");
 
         if (!splitCommand[0].equals("DRAWSCENE")) {
-            nextHandler.request(command, shape);
+            nextHandler.request(command, state);
         }
 
-        try {
-            DrawScene drawScene = new DrawScene();
-            drawScene.execute(State.getExistingShapes());
-        } catch (Exception e) {
-            System.err.println(e);
-        }
+        DrawScene drawScene = new DrawScene();
+
+        drawScene.execute(splitCommand, state);
+        state.addCommand(drawScene);
     }
 }

@@ -1,7 +1,7 @@
 package commands.handlers;
 
+import commands.commandManager.State;
 import commands.commands.Move;
-import commands.shapes.Shape;
 
 public class MoveHandler implements Handler {
     Handler nextHandler;
@@ -10,20 +10,23 @@ public class MoveHandler implements Handler {
         this.nextHandler = nextHandler;
     }
 
-    public void request(String command, Shape shape) {
+    public void request(String command, State state) {
         String[] splitCommand = command.split(" ");
 
         if (!splitCommand[0].equals("MOVE")) {
-            nextHandler.request(command, shape);
+            nextHandler.request(command, state);
         }
 
         try {
-            double[] coordinates = { Double.parseDouble(splitCommand[1]),
-                    Double.parseDouble(splitCommand[2]) };
-
-            Move.execute(shape, coordinates);
+            Double.parseDouble(splitCommand[1]);
+            Double.parseDouble(splitCommand[2]);
         } catch (Exception e) {
             System.err.println(e);
         }
+
+        Move move = new Move();
+
+        move.execute(splitCommand, state);
+        state.addCommand(move);
     }
 }
