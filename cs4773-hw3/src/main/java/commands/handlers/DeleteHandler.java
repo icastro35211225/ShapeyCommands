@@ -1,7 +1,7 @@
 package commands.handlers;
 
+import commands.commandManager.State;
 import commands.commands.Delete;
-import commands.shapes.Shape;
 
 public class DeleteHandler implements Handler {
     Handler nextHandler;
@@ -10,19 +10,16 @@ public class DeleteHandler implements Handler {
         this.nextHandler = nextHandler;
     }
 
-    public void request(String command, Shape shape) {
+    public void request(String command, State state) {
         String[] splitCommad = command.split(" ");
 
         if (!splitCommad[0].equals("DELETE")) {
-            nextHandler.request(command, shape);
+            nextHandler.request(command, state);
         }
 
-        try {
-            int index = Integer.parseInt(splitCommad[1]);
-            Delete delete = new Delete();
-            delete.execute(shape);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
+        Delete delete = new Delete();
+
+        delete.execute(splitCommad, state);
+        state.addCommand(delete);
     }
 }

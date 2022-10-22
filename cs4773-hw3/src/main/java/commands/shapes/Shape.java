@@ -17,6 +17,10 @@ public abstract class Shape {
         origin.execute(coordinates);
     }
 
+    public final void setColor(String color) {
+        this.color.setColor(color);
+    }
+
     public abstract String draw();
 
 }

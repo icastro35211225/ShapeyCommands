@@ -1,7 +1,10 @@
 package commands.commands;
 
-public abstract class Command {
-    String commandLine;
+import commands.commandManager.State;
 
-    abstract void undo();
+public interface Command {
+
+    void execute(String[] command, State state);
+
+    void undo(String[] command, State state);
 }

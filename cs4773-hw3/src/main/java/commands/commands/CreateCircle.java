@@ -3,14 +3,15 @@ package commands.commands;
 import commands.commandManager.State;
 import commands.shapes.Circle;
 
-public class CreateCircle extends Command {
+public class CreateCircle implements Command {
 
-    public void execute(double radius) {
+    public void execute(String[] command, State state) {
+        double radius = Double.parseDouble(command[2]);
         Circle newCircle = new Circle(radius);
-        State.existingShapes.add(newCircle);
+        state.existingShapes.add(newCircle);
     }
 
-    public void undo() {
+    public void undo(String[] command, State state) {
 
     }
 }

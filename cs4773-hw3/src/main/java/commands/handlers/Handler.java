@@ -1,9 +1,9 @@
 package commands.handlers;
 
-import commands.shapes.Shape;
+import commands.commandManager.State;
 
 public interface Handler {
     Handler nextHandler = null;
 
-    public void request(String command, Shape shape);
+    public void request(String command, State state);
 }

@@ -1,15 +1,19 @@
 package commands.commands;
 
-import commands.shapes.Shape;
 import commands.commandManager.State;
+import commands.shapes.Shape;
 
-public class Delete extends Command {
+public class Delete implements Command {
+    Shape deletedShape = null;
+    int index;
 
-    public void execute(Shape shape) {
-        State.existingShapes.remove(shape);
+    public void execute(String[] command, State state) {
+        index = state.currentShape;
+        deletedShape = state.getShape();
+        state.existingShapes.remove(state.currentShape);
     }
 
-    public void undo() {
-
+    public void undo(String[] command, State state) {
+        state.existingShapes.add(index, deletedShape);
     }
 }

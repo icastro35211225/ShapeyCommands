@@ -3,14 +3,16 @@ package commands.commands;
 import commands.commandManager.State;
 import commands.shapes.Rectangle;
 
-public class CreateRectangle extends Command {
+public class CreateRectangle implements Command {
 
-    public void execute(int height, int width) {
+    public void execute(String[] command, State state) {
+        double height = Double.parseDouble(command[2]);
+        double width = Double.parseDouble(command[3]);
         Rectangle newRectangle = new Rectangle(height, width);
-        State.existingShapes.add(newRectangle);
+        state.existingShapes.add(newRectangle);
     }
 
-    public void undo() {
+    public void undo(String[] command, State state) {
 
     }
 }

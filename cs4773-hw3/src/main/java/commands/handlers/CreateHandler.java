@@ -1,7 +1,7 @@
 package commands.handlers;
 
+import commands.commandManager.State;
 import commands.commands.*;
-import commands.shapes.Shape;;
 
 public class CreateHandler implements Handler {
     Handler nextHandler;
@@ -10,22 +10,36 @@ public class CreateHandler implements Handler {
         this.nextHandler = nextHandler;
     }
 
-    public void request(String command, Shape shape) {
+    public void request(String command, State state) {
         String[] splitCommand = command.split(" ");
         if (!splitCommand[0].equals("CREATE")) {
-            nextHandler.request(command, shape);
+            nextHandler.request(command, state);
         }
 
-        try {
-            String shapeType = splitCommand[1];
-            if (shapeType.equals("RECTANGLE")) {
-                int height = Integer.parseInt(splitCommand[2]);
-                int width = Integer.parseInt(splitCommand[3]);
-                CreateRectangle create = new CreateRectangle();
-                create.execute(height, width);
+        if (splitCommand[1].equals("CIRCLE")) {
+            try {
+                Double.parseDouble(splitCommand[2]);
+            } catch (Exception e) {
+                System.err.println(e);
             }
-        } catch (Exception e) {
-            System.err.println(e);
+
+            CreateCircle createCircle = new CreateCircle();
+
+            createCircle.execute(splitCommand, state);
+            state.addCommand(createCircle);
+
+        } else if (splitCommand[1].equals("RECTANGLE")) {
+            try {
+                Double.parseDouble(splitCommand[2]);
+                Double.parseDouble(splitCommand[3]);
+            } catch (Exception e) {
+                System.err.println(e);
+            }
+
+            CreateRectangle createRectangle = new CreateRectangle();
+
+            createRectangle.execute(splitCommand, state);
+            state.addCommand(createRectangle);
         }
     }
 }
