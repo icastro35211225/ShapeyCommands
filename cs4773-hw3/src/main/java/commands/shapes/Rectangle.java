@@ -3,12 +3,13 @@ package commands.shapes;
 public class Rectangle extends Shape {
     private double height;
     private double width;
-    private double[] cooridnates = origin.getOrigin();
+    private Origin origin;
 
     public Rectangle(double height, double width) {
         this.height = height;
         this.width = width;
-        color.setColor("Red");
+        origin = new Origin(0, 0);
+        color = color.Red;
     }
 
     public void setHeight(double height) {
@@ -28,7 +29,7 @@ public class Rectangle extends Shape {
     }
 
     public String draw() {
-        return "Rectangle, Color: " + color + ", Origin: (" + cooridnates[0] + ", " + cooridnates[1] + "), Width: "
+        return "Rectangle, Color: " + color + ", Origin: (" + origin.getX() + ", " + origin.getY() + "), Width: "
                 + width
                 + ", Height: " + height;
     }

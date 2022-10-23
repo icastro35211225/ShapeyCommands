@@ -1,23 +1,21 @@
 package commands.commands;
 
 import commands.commandManager.State;
-import commands.shapes.Shape;
+import commands.shapes.Color;
 
 public class ChangeColor implements Command {
     String[] commandString;
+    Color prevColor;
 
     public void execute(String[] command, State state) {
+        prevColor = state.getShape().getColor();
         this.commandString = command;
-        String color = command[1];
-        Shape currentShape = state.getShape();
-        currentShape.setColor(color);
+        Color color = Color.valueOf(command[1]);
+        state.getShape().setColor(color);
     }
 
     public void undo(String[] command, State state) {
-        Command oldCommand = state.popMomento().getCommand();
-
-        String[] oldCommandString = oldCommand.getCommandString();
-
+        state.getShape().setColor(prevColor);
     }
 
     public String[] getCommandString() {

@@ -1,24 +1,24 @@
 package commands.shapes;
 
 public abstract class Shape {
-    Origin origin = new Origin();
+    Origin origin;
     int index = -1;
-    Color color = new Color();
+    Color color;
 
-    public final double[] getOrigin() {
-        return origin.getOrigin();
+    public final Origin getOrigin() {
+        return origin;
     }
 
-    public final String getColor() {
-        return color.getColor();
+    public final Color getColor() {
+        return color;
     }
 
-    public final void setOrigin(double[] coordinates) {
-        origin.execute(coordinates);
+    public final void setOrigin(Origin origin) {
+        this.origin = origin;
     }
 
-    public final void setColor(String color) {
-        this.color.setColor(color);
+    public final void setColor(Color color) {
+        this.color = color;
     }
 
     public abstract String draw();

@@ -2,11 +2,12 @@ package commands.shapes;
 
 public class Circle extends Shape {
     private double radius;
-    private double[] coordinates = origin.getOrigin();
+    private Origin origin;
 
     public Circle(double radius) {
         this.radius = radius;
-        color.setColor("blue");
+        origin = new Origin(0, 0);
+        color = color.Blue;
     }
 
     public void setRadius(double radius) {
@@ -14,7 +15,7 @@ public class Circle extends Shape {
     }
 
     public String draw() {
-        return "Circle, Color: " + color + ", Origin: (" + coordinates[0] + ", " + coordinates[1] + "), Radius: "
+        return "Circle, Color: " + color + ", Origin: (" + origin.getX() + ", " + origin.getY() + "), Radius: "
                 + radius;
     }
 }

@@ -5,10 +5,11 @@ import commands.shapes.Shape;
 
 public class Delete implements Command {
     String[] commandString;
-    Shape deletedShape = null;
+    Shape deletedShape;
     int index;
 
     public void execute(String[] command, State state) {
+        // LOOK AT CANADIAN'S
         commandString = command;
         index = state.currentShape;
         deletedShape = state.getShape();
