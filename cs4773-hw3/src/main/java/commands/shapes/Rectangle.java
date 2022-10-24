@@ -9,7 +9,7 @@ public class Rectangle extends Shape {
         this.height = height;
         this.width = width;
         origin = new Origin(0, 0);
-        color = color.Red;
+        color = Color.Red;
     }
 
     public void setHeight(double height) {

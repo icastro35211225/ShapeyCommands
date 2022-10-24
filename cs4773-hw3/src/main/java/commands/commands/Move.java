@@ -2,28 +2,23 @@ package commands.commands;
 
 import commands.commandManager.State;
 import commands.shapes.Origin;
-import commands.shapes.Shape;
 
 public class Move implements Command {
-    String[] commandString;
     Origin prevOrigin;
-    int index;
+    int prevIndex;
 
     public void execute(String[] command, State state) {
-        commandString = command;
         double x = Double.parseDouble(command[1]);
         double y = Double.parseDouble(command[2]);
-        Shape shape = state.existingShapes.get(state.currentShape);
         Origin newOrigin = new Origin(x, y);
-        shape.setOrigin(newOrigin);
-        prevOrigin = newOrigin;
+
+        prevIndex = state.currentShape;
+        prevOrigin = state.getShape().getOrigin();
+
+        state.existingShapes.get(state.currentShape).setOrigin(newOrigin);
     }
 
-    public void undo(String[] command, State state) {
-        state.getExistingShapes().get(index).setOrigin(prevOrigin);
-    }
-
-    public String[] getCommandString() {
-        return this.commandString;
+    public void undo(State state) {
+        state.getExistingShapes().get(prevIndex).setOrigin(prevOrigin);
     }
 }

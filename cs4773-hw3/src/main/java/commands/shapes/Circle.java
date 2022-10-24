@@ -7,7 +7,7 @@ public class Circle extends Shape {
     public Circle(double radius) {
         this.radius = radius;
         origin = new Origin(0, 0);
-        color = color.Blue;
+        color = Color.Blue;
     }
 
     public void setRadius(double radius) {

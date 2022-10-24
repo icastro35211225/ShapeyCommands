@@ -6,7 +6,5 @@ public interface Command {
 
     void execute(String[] command, State state);
 
-    void undo(String[] command, State state);
-
-    String[] getCommandString();
+    void undo(State state);
 }

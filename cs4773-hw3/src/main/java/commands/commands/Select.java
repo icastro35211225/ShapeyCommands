@@ -3,25 +3,19 @@ package commands.commands;
 import commands.commandManager.State;
 
 public class Select implements Command {
-    String[] commandString;
-    int selectedShape = 0;
-    int prevShape = 0;
+    int prevIndex = 0;
 
     public void execute(String[] command, State state) {
-        commandString = command;
         int index = Integer.parseInt(command[1]);
-
-        prevShape = selectedShape;
-        selectedShape = index;
-
-        state.currentShape = index;
+        if ((index - 1) >= 0 && (index - 1) < state.existingShapes.size()) {
+            prevIndex = state.getCurrentShape();
+            state.setCurrentShape(index - 1);
+        } else {
+            System.out.println("ERROR: invalid shape for SELECT");
+        }
     }
 
-    public void undo(String[] command, State state) {
-
-    }
-
-    public String[] getCommandString() {
-        return this.commandString;
+    public void undo(State state) {
+        state.setCurrentShape(prevIndex);
     }
 }

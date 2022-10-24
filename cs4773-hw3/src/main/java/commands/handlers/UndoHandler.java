@@ -1,7 +1,7 @@
 package commands.handlers;
 
 import commands.commandManager.State;
-import commands.commands.Command;
+import commands.commands.Undo;
 
 public class UndoHandler implements Handler {
     Handler nextHandler;
@@ -14,11 +14,9 @@ public class UndoHandler implements Handler {
         String[] splitCommand = command.split(" ");
 
         if (!splitCommand[0].equals("UNDO")) {
-            // nextHandler.request(command, state);
             System.err.println("ERROR! Invalid Command Given!! -_-");
         }
-
-        Command undoCommand = state.popMomento().getCommand();
-        undoCommand.undo(splitCommand, state);
+        Undo undo = new Undo();
+        undo.execute(splitCommand, state);
     }
 }

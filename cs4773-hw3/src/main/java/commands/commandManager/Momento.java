@@ -5,8 +5,8 @@ import commands.commands.Command;
 public class Momento {
     Command command;
 
-    public Momento(Command command) {
-        this.command = command;
+    public Momento() {
+
     }
 
     public void setCommand(Command command) {

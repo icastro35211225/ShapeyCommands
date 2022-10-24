@@ -4,23 +4,17 @@ import commands.commandManager.State;
 import commands.shapes.Shape;
 
 public class Delete implements Command {
-    String[] commandString;
     Shape deletedShape;
-    int index;
+    int prevIndex;
 
     public void execute(String[] command, State state) {
-        // LOOK AT CANADIAN'S
-        commandString = command;
-        index = state.currentShape;
+        prevIndex = state.getCurrentShape();
         deletedShape = state.getShape();
-        state.existingShapes.remove(state.currentShape);
+        state.removeShape(state.currentShape);
+        state.setCurrentShape(-1);
     }
 
-    public void undo(String[] command, State state) {
-        state.existingShapes.add(index, deletedShape);
-    }
-
-    public String[] getCommandString() {
-        return this.commandString;
+    public void undo(State state) {
+        state.addShape(prevIndex, deletedShape);
     }
 }

@@ -7,16 +7,26 @@ import commands.commands.Command;
 import commands.shapes.Shape;
 
 public class State {
-    public ArrayList<Shape> existingShapes = new ArrayList<Shape>();
-    public Stack<Momento> momentos = new Stack<Momento>();
-    public int currentShape = 0;
+    public ArrayList<Shape> existingShapes;
+    public Stack<Momento> momentos;
+    public int currentShape = -1;
+
+    public State() {
+        existingShapes = new ArrayList<Shape>();
+        momentos = new Stack<Momento>();
+    }
 
     public void addShape(Shape newShape) {
         existingShapes.add(newShape);
     }
 
+    public void addShape(int index, Shape shape) {
+        existingShapes.add(index, shape);
+    }
+
     public void addCommand(Command newCommand) {
-        Momento newMomento = new Momento(newCommand);
+        Momento newMomento = new Momento();
+        newMomento.setCommand(newCommand);
         momentos.add(newMomento);
     }
 
@@ -26,6 +36,10 @@ public class State {
 
     public void removeShape(int index) {
         existingShapes.remove(index);
+    }
+
+    public void removeShape(Shape shape) {
+        existingShapes.remove(shape);
     }
 
     public ArrayList<Shape> getExistingShapes() {
@@ -42,7 +56,15 @@ public class State {
         return retShape;
     }
 
+    public int getCurrentShape() {
+        return currentShape;
+    }
+
     public int getShapeIndex(Shape shape) {
         return existingShapes.indexOf(shape);
+    }
+
+    public void setCurrentShape(int index) {
+        this.currentShape = index;
     }
 }
