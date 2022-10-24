@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 import commands.commands.Command;
+import commands.shapes.Origin;
 import commands.shapes.Shape;
 
 public class State {
@@ -66,5 +67,9 @@ public class State {
 
     public void setCurrentShape(int index) {
         this.currentShape = index;
+    }
+
+    public void setOrigin(Origin origin) {
+        existingShapes.get(currentShape).setOrigin(origin);
     }
 }

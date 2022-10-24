@@ -11,6 +11,7 @@ public class HandlerChain {
     public HandlerChain() {
         CreateHandler createHandler = new CreateHandler();
         ColorHandler colorHandler = new ColorHandler();
+        DeleteHandler deleteHandler = new DeleteHandler();
         DrawHandler drawHandler = new DrawHandler();
         DrawSceneHandler drawSceneHandler = new DrawSceneHandler();
         MoveHandler moveHandler = new MoveHandler();
@@ -26,10 +27,12 @@ public class HandlerChain {
         addHandler(undoHandler);
 
         createHandler.setNextHandler(colorHandler);
-        colorHandler.setNextHandler(drawHandler);
+        colorHandler.setNextHandler(deleteHandler);
+        deleteHandler.setNextHandler(drawHandler);
         drawHandler.setNextHandler(drawSceneHandler);
         drawSceneHandler.setNextHandler(moveHandler);
         moveHandler.setNextHandler(selectHandler);
+        selectHandler.setNextHandler(undoHandler);
         undoHandler.setNextHandler(null);
 
         firstHandler = createHandler;

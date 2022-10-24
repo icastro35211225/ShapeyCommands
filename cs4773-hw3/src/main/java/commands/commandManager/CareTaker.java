@@ -23,7 +23,7 @@ public class CareTaker {
             Scanner fileReader = new Scanner(commandFile);
             while (fileReader.hasNextLine()) {
                 String currentCommand = fileReader.nextLine();
-                handlerChain.handleRequest(currentCommand, state);
+                this.handlerChain.handleRequest(currentCommand, state);
             }
             fileReader.close();
         } catch (FileNotFoundException e) {

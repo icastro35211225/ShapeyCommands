@@ -7,7 +7,7 @@ public class CreateCircle implements Command {
     Circle newCircle;
 
     public void execute(String[] command, State state) {
-        double radius = Double.parseDouble(command[2]);
+        int radius = Integer.parseInt(command[2]);
         newCircle = new Circle(radius);
         state.existingShapes.add(newCircle);
     }

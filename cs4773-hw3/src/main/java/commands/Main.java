@@ -6,7 +6,7 @@ import commands.handlers.HandlerChain;
 
 public class Main {
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
         String fileName = getFileName(args);
         State state = new State();
         HandlerChain handlerChain = new HandlerChain();
@@ -15,7 +15,7 @@ public class Main {
         careTaker.readCommands();
     }
 
-    public String getFileName(String[] args) {
+    public static String getFileName(String[] args) {
         String fileName = "";
         try {
             fileName = args[0];

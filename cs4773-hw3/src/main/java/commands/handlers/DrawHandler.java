@@ -15,11 +15,12 @@ public class DrawHandler implements Handler {
 
         if (!splitCommand[0].equals("DRAW")) {
             nextHandler.request(command, state);
+        } else {
+
+            Draw draw = new Draw();
+
+            draw.execute(splitCommand, state);
+            state.addCommand(draw);
         }
-
-        Draw draw = new Draw();
-
-        draw.execute(splitCommand, state);
-        state.addCommand(draw);
     }
 }

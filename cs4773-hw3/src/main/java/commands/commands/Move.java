@@ -8,14 +8,14 @@ public class Move implements Command {
     int prevIndex;
 
     public void execute(String[] command, State state) {
-        double x = Double.parseDouble(command[1]);
-        double y = Double.parseDouble(command[2]);
+        int x = Integer.parseInt(command[1]);
+        int y = Integer.parseInt(command[2]);
         Origin newOrigin = new Origin(x, y);
 
         prevIndex = state.currentShape;
         prevOrigin = state.getShape().getOrigin();
 
-        state.existingShapes.get(state.currentShape).setOrigin(newOrigin);
+        state.setOrigin(newOrigin);
     }
 
     public void undo(State state) {

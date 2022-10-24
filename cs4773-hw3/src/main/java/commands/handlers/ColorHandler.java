@@ -11,14 +11,15 @@ public class ColorHandler implements Handler {
     }
 
     public void request(String command, State state) {
-        String[] splitCommand = command.split(command);
+        String[] splitCommand = command.split(" ");
         if (!splitCommand[0].equals("COLOR")) {
             nextHandler.request(command, state);
+        } else {
+
+            ChangeColor changeColor = new ChangeColor();
+
+            changeColor.execute(splitCommand, state);
+            state.addCommand(changeColor);
         }
-
-        ChangeColor changeColor = new ChangeColor();
-
-        changeColor.execute(splitCommand, state);
-        state.addCommand(changeColor);
     }
 }

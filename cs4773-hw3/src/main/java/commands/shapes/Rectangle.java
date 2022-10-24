@@ -1,35 +1,43 @@
 package commands.shapes;
 
 public class Rectangle extends Shape {
-    private double height;
-    private double width;
+    private int height;
+    private int width;
     private Origin origin;
 
-    public Rectangle(double height, double width) {
+    public Rectangle(int height, int width) {
         this.height = height;
         this.width = width;
         origin = new Origin(0, 0);
         color = Color.Red;
     }
 
-    public void setHeight(double height) {
+    public void setHeight(int height) {
         this.height = height;
     }
 
-    public void setWidth(double width) {
+    public void setWidth(int width) {
         this.width = width;
     }
 
-    public double getHeigth() {
+    public void setOrigin(Origin origin) {
+        this.origin = origin;
+    }
+
+    public int getHeigth() {
         return height;
     }
 
-    public double getWidth() {
+    public int getWidth() {
         return width;
     }
 
+    public Origin getOrigin() {
+        return origin;
+    }
+
     public String draw() {
-        return "Rectangle, Color: " + color + ", Origin: (" + origin.getX() + ", " + origin.getY() + "), Width: "
+        return "Rectangle, Color: " + color + ", Origin: (" + origin.getX() + "," + origin.getY() + "), Width: "
                 + width
                 + ", Height: " + height;
     }

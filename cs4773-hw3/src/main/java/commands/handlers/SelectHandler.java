@@ -15,17 +15,18 @@ public class SelectHandler implements Handler {
 
         if (!splitCommand[0].equals("SELECT")) {
             nextHandler.request(command, state);
+        } else {
+
+            try {
+                Integer.parseInt(splitCommand[1]);
+            } catch (Exception e) {
+                System.err.println(e);
+            }
+
+            Select select = new Select();
+
+            select.execute(splitCommand, state);
+            state.addCommand(select);
         }
-
-        try {
-            Integer.parseInt(splitCommand[1]);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-
-        Select select = new Select();
-
-        select.execute(splitCommand, state);
-        state.addCommand(select);
     }
 }

@@ -15,11 +15,12 @@ public class DeleteHandler implements Handler {
 
         if (!splitCommad[0].equals("DELETE")) {
             nextHandler.request(command, state);
+        } else {
+
+            Delete delete = new Delete();
+
+            delete.execute(splitCommad, state);
+            state.addCommand(delete);
         }
-
-        Delete delete = new Delete();
-
-        delete.execute(splitCommad, state);
-        state.addCommand(delete);
     }
 }

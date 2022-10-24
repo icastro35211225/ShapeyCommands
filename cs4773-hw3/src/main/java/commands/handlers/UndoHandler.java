@@ -15,8 +15,9 @@ public class UndoHandler implements Handler {
 
         if (!splitCommand[0].equals("UNDO")) {
             System.err.println("ERROR! Invalid Command Given!! -_-");
+        } else {
+            Undo undo = new Undo();
+            undo.execute(splitCommand, state);
         }
-        Undo undo = new Undo();
-        undo.execute(splitCommand, state);
     }
 }

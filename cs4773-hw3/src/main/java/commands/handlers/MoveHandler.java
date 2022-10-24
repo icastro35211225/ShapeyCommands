@@ -15,18 +15,19 @@ public class MoveHandler implements Handler {
 
         if (!splitCommand[0].equals("MOVE")) {
             nextHandler.request(command, state);
+        } else {
+
+            try {
+                Integer.parseInt(splitCommand[1]);
+                Integer.parseInt(splitCommand[2]);
+            } catch (Exception e) {
+                System.err.println(e);
+            }
+
+            Move move = new Move();
+
+            move.execute(splitCommand, state);
+            state.addCommand(move);
         }
-
-        try {
-            Double.parseDouble(splitCommand[1]);
-            Double.parseDouble(splitCommand[2]);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-
-        Move move = new Move();
-
-        move.execute(splitCommand, state);
-        state.addCommand(move);
     }
 }

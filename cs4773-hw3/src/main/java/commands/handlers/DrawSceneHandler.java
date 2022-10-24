@@ -15,11 +15,12 @@ public class DrawSceneHandler implements Handler {
 
         if (!splitCommand[0].equals("DRAWSCENE")) {
             nextHandler.request(command, state);
+        } else {
+
+            DrawScene drawScene = new DrawScene();
+
+            drawScene.execute(splitCommand, state);
+            state.addCommand(drawScene);
         }
-
-        DrawScene drawScene = new DrawScene();
-
-        drawScene.execute(splitCommand, state);
-        state.addCommand(drawScene);
     }
 }

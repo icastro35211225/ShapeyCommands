@@ -7,8 +7,8 @@ public class CreateRectangle implements Command {
     Rectangle newRectangle;
 
     public void execute(String[] command, State state) {
-        double height = Double.parseDouble(command[2]);
-        double width = Double.parseDouble(command[3]);
+        int width = Integer.parseInt(command[2]);
+        int height = Integer.parseInt(command[3]);
         newRectangle = new Rectangle(height, width);
         state.existingShapes.add(newRectangle);
     }
