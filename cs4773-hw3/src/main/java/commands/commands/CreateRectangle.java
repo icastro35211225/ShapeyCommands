@@ -10,10 +10,10 @@ public class CreateRectangle implements Command {
         int width = Integer.parseInt(command[2]);
         int height = Integer.parseInt(command[3]);
         newRectangle = new Rectangle(height, width);
-        state.existingShapes.add(newRectangle);
+        state.appendShape(newRectangle);
     }
 
     public void undo(State state) {
-        state.removeShape(newRectangle);
+        state.removeShapeByShape(newRectangle);
     }
 }

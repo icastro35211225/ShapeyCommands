@@ -10,11 +10,11 @@ public class Delete implements Command {
     public void execute(String[] command, State state) {
         prevIndex = state.getCurrentShape();
         deletedShape = state.getShape();
-        state.removeShape(state.currentShape);
+        state.removeShapeByIndex(state.currentShape);
         state.setCurrentShape(-1);
     }
 
     public void undo(State state) {
-        state.addShape(prevIndex, deletedShape);
+        state.addShapeByIndex(prevIndex, deletedShape);
     }
 }

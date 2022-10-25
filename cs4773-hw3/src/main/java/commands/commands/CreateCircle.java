@@ -9,10 +9,10 @@ public class CreateCircle implements Command {
     public void execute(String[] command, State state) {
         int radius = Integer.parseInt(command[2]);
         newCircle = new Circle(radius);
-        state.existingShapes.add(newCircle);
+        state.appendShape(newCircle);
     }
 
     public void undo(State state) {
-        state.removeShape(newCircle);
+        state.removeShapeByShape(newCircle);
     }
 }

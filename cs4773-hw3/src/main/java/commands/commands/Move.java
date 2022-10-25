@@ -19,6 +19,6 @@ public class Move implements Command {
     }
 
     public void undo(State state) {
-        state.getExistingShapes().get(prevIndex).setOrigin(prevOrigin);
+        state.getShapes().get(prevIndex).setOrigin(prevOrigin);
     }
 }

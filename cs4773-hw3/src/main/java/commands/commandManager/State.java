@@ -17,11 +17,11 @@ public class State {
         momentos = new Stack<Momento>();
     }
 
-    public void addShape(Shape newShape) {
+    public void appendShape(Shape newShape) {
         existingShapes.add(newShape);
     }
 
-    public void addShape(int index, Shape shape) {
+    public void addShapeByIndex(int index, Shape shape) {
         existingShapes.add(index, shape);
     }
 
@@ -35,15 +35,15 @@ public class State {
         return momentos.pop();
     }
 
-    public void removeShape(int index) {
+    public void removeShapeByIndex(int index) {
         existingShapes.remove(index);
     }
 
-    public void removeShape(Shape shape) {
+    public void removeShapeByShape(Shape shape) {
         existingShapes.remove(shape);
     }
 
-    public ArrayList<Shape> getExistingShapes() {
+    public ArrayList<Shape> getShapes() {
         return existingShapes;
     }
 
