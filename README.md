@@ -1,7 +1,7 @@
 # ShapeyCommands
 This project takes string commands that prints out diferent output, or changes an array of obejects.
 ---
-## 'Example Input'
+## Example Input
 CREATE RECTANGLE 5 7
 CREATE CIRCLE 10
 SELECT 1
@@ -25,7 +25,7 @@ DELETE
 UNDO
 DRAWSCENE
 ---
-## 'Example Output'
+## Example Output
 Rectangle, Color: Red, Origin: (10,15), Width: 5, Height: 7
 Circle, Color: Blue, Origin: (7,7), Radius: 10
 ERROR: invalid shape for SELECT
