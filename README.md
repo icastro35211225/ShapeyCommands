@@ -2,36 +2,36 @@
 This project takes string commands that prints out diferent output, or changes an array of obejects.
 ---
 ## Example Input
-CREATE RECTANGLE 5 7
-CREATE CIRCLE 10
-SELECT 1
-MOVE 10 15
-COLOR Blue
-UNDO
-DRAW
-SELECT 2
-MOVE 5 5
-COLOR Orange
-UNDO
-UNDO
-MOVE 7 7
-DRAW
-CREATE CIRCLE 20
-SELECT 4
-SELECT 3
-COLOR Yellow
-MOVE 10 10
-DELETE
-UNDO
-DRAWSCENE
+CREATE RECTANGLE 5 7\
+CREATE CIRCLE 10\
+SELECT 1\
+MOVE 10 15\
+COLOR Blue\
+UNDO\
+DRAW\
+SELECT 2\
+MOVE 5 5\
+COLOR Orange\
+UNDO\
+UNDO\
+MOVE 7 7\
+DRAW\
+CREATE CIRCLE 20\
+SELECT 4\
+SELECT 3\
+COLOR Yellow\
+MOVE 10 10\
+DELETE\
+UNDO\
+DRAWSCENE\
 ---
 ## Example Output
-Rectangle, Color: Red, Origin: (10,15), Width: 5, Height: 7
-Circle, Color: Blue, Origin: (7,7), Radius: 10
-ERROR: invalid shape for SELECT
-Rectangle, Color: Red, Origin: (10,15), Width: 5, Height: 7
-Circle, Color: Blue, Origin: (7,7), Radius: 10
-Circle, Color: Yellow, Origin: (10,10), Radius: 20
+Rectangle, Color: Red, Origin: (10,15), Width: 5, Height: 7\
+Circle, Color: Blue, Origin: (7,7), Radius: 10\
+ERROR: invalid shape for SELECT\
+Rectangle, Color: Red, Origin: (10,15), Width: 5, Height: 7\
+Circle, Color: Blue, Origin: (7,7), Radius: 10\
+Circle, Color: Yellow, Origin: (10,10), Radius: 20\
 ---
 ## Command Object (Interface)
 Each command had 2 functions. An execute and undo command. Almost all commands need undo functionality, except DRAWSCENE and DRAW. DRAW just prints out the information stored in the current shape; if a current shape is selected. DRAWSCENE prints out all the shapes in that specific state.
